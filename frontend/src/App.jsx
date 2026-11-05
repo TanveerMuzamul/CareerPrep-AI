@@ -1,7 +1,12 @@
 
+import { useState } from 'react'
+import Login from './Login'
+import Signup from './Signup'
 import './App.css'
 
 function App() {
+  const [showSignup, setShowSignup] = useState(false)
+
   return (
     <div>
       <h1>CareerPrep AI</h1>
@@ -19,6 +24,19 @@ function App() {
         <li>AI Presentation Practice</li>
         <li>Progress Tracking</li>
       </ul>
+
+      {showSignup ? <Signup /> : <Login />}
+
+      <p>
+        {showSignup ? 'Already have an account?' : "Don't have an account?"}
+        {' '}
+        <button
+          type="button"
+          onClick={() => setShowSignup(!showSignup)}
+        >
+          {showSignup ? 'Login' : 'Sign Up'}
+        </button>
+      </p>
     </div>
   )
 }
