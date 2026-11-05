@@ -1,4 +1,5 @@
-
+// Import the component that tests our FastAPI connection
+import BackendTest from "./BackendTest";
 import { useState } from 'react'
 import Login from './Login'
 import Signup from './Signup'
@@ -77,6 +78,7 @@ function App() {
         </main>
       )}
 
+
       {page === 'signup' && (
         <main className="auth-section">
           <Signup />
@@ -88,6 +90,11 @@ function App() {
           </p>
         </main>
       )}
+
+      
+      {/* Test the connection between React and FastAPI */}
+      {page === 'home' && <BackendTest />}
+
     </div>
   )
 }
