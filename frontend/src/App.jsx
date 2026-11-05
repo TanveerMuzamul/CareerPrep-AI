@@ -5,38 +5,89 @@ import Signup from './Signup'
 import './App.css'
 
 function App() {
-  const [showSignup, setShowSignup] = useState(false)
+  const [page, setPage] = useState('home')
 
   return (
-    <div>
-      <h1>CareerPrep AI</h1>
-      <p>AI-Powered Interview and Presentation Preparation Platform</p>
+    <div className="app">
+      <header className="navbar">
+        <h2 className="logo">CareerPrep AI</h2>
 
-      <h2>Welcome to CareerPrep AI</h2>
-      <p>
-        Prepare for job interviews and practise presentations using AI.
-      </p>
+        <nav>
+          <button onClick={() => setPage('home')}>Home</button>
+          <button onClick={() => setPage('login')}>Login</button>
+          <button onClick={() => setPage('signup')}>Sign Up</button>
+        </nav>
+      </header>
 
-      <h3>Main Features</h3>
-      <ul>
-        <li>CV Upload</li>
-        <li>AI Interview Practice</li>
-        <li>AI Presentation Practice</li>
-        <li>Progress Tracking</li>
-      </ul>
+      {page === 'home' && (
+        <main className="home">
+          <h1>Welcome to CareerPrep AI</h1>
+          <p>
+            AI-Powered Interview and Presentation Preparation Platform
+          </p>
 
-      {showSignup ? <Signup /> : <Login />}
+          <p>
+            Prepare for job interviews and practise presentations using AI.
+          </p>
 
-      <p>
-        {showSignup ? 'Already have an account?' : "Don't have an account?"}
-        {' '}
-        <button
-          type="button"
-          onClick={() => setShowSignup(!showSignup)}
-        >
-          {showSignup ? 'Login' : 'Sign Up'}
-        </button>
-      </p>
+          <button
+            className="get-started"
+            onClick={() => setPage('signup')}
+          >
+            Get Started
+          </button>
+
+          <section className="features">
+            <h2>Main Features</h2>
+
+            <div className="feature-grid">
+              <div className="feature-card">
+                <h3>CV Upload</h3>
+                <p>Upload your CV to prepare for interviews.</p>
+              </div>
+
+              <div className="feature-card">
+                <h3>AI Interview Practice</h3>
+                <p>Practise answering interview questions.</p>
+              </div>
+
+              <div className="feature-card">
+                <h3>AI Presentation Practice</h3>
+                <p>Prepare and practise presentations.</p>
+              </div>
+
+              <div className="feature-card">
+                <h3>Progress Tracking</h3>
+                <p>Track your practice results and improvements.</p>
+              </div>
+            </div>
+          </section>
+        </main>
+      )}
+
+      {page === 'login' && (
+        <main className="auth-section">
+          <Login />
+          <p>
+            Don't have an account?{' '}
+            <button onClick={() => setPage('signup')}>
+              Sign Up
+            </button>
+          </p>
+        </main>
+      )}
+
+      {page === 'signup' && (
+        <main className="auth-section">
+          <Signup />
+          <p>
+            Already have an account?{' '}
+            <button onClick={() => setPage('login')}>
+              Login
+            </button>
+          </p>
+        </main>
+      )}
     </div>
   )
 }
