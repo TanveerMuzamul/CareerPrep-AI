@@ -1,0 +1,24 @@
+
+#root {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+h1 {
+  color: #2563eb;
+}
+
+h2, h3 {
+  color: #1e293b;
+}
+
+ul {
+  list-style-position: inside;
+  padding: 0;
+}
+
+li {
+  margin: 10px 0;
+}
